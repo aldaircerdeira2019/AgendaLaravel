@@ -10,7 +10,7 @@ class ContatoControl extends Controller
 {
 
     private $contato;
-    private $pagi = 1000;
+    private $pagi = 10;
     public function __construct(ContatoModel $contato)
     {
         $this->contato = $contato;
