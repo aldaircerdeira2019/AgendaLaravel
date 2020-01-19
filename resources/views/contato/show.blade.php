@@ -19,7 +19,7 @@
 
         
             <div class="card-body">
-                <img src="{{ $contato->avatar_image }}" class="img-avatar">
+                <img src="{{ $contato->avatar_image }}" class="avatar-show">
                 <table class="table table-hover" style="margin-bottom: inherit">
                     <tr><th>Id: </th>                   <td>{{$contato->id}}</td></tr>
                     <tr><th>Nome: </th>                 <td>{{$contato->nome}}</td></tr>

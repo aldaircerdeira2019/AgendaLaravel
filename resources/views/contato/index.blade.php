@@ -21,7 +21,7 @@
                 </tr>
                 @foreach ($contato as $contato)
                 <tr>
-                    <td><img src="{{ $contato->avatar_image }}" class="img-avatar-xs"></td>
+                    <td><img src="{{ $contato->avatar_image }}" class="avatar-index"></td>
                     <td class='a-line'>{{ $contato->nome }}</td>
                     <td class="d-none d-md-table-cell">{{ $contato->telefone }}</td>
                     <td class="d-none d-md-table-cell">{{ $contato->email }}</td>
