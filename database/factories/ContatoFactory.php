@@ -11,7 +11,7 @@ $factory->define(ContatoModel::class, function (Faker $faker) {
         'nome'          =>   $faker->name,
         'telefone'      =>   $faker->cellphoneNumber,
         'email'         =>   $faker->unique()->safeEmail,
-        'data_n'        =>   $faker->date('Y-m-d'),
+        'data_nas'      =>   $faker->date('d-m-Y'),
         'descrição'     =>   'descrição do contato automatico',
     ];
 });
