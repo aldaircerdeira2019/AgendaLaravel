@@ -33,10 +33,24 @@ class ContatoControl extends Controller
     
     public function store(ContatoRequest $request)
     {
-        $dados = $request->all();
-        $insert =$this->contato->create($dados);
-        return redirect()->route('contato.index');
-        return'deu certo';
+        try 
+        {
+            $dados = $request->all();
+            $insert =$this->contato->create($dados);
+            flash('cadastrado com sucesso!')->success();
+            return redirect()->route('contato.index');
+            
+        } catch (\exception $e) 
+        {
+            if(env('APP_DEBUG'))
+            {
+                flash($e->getMessage())->error();
+                return redirect()->back();
+            }
+            flash('erro ao cadastrar,  verifique os dados')->error();
+            return redirect()->back();
+        }
+      
     }
 
    
@@ -57,18 +71,47 @@ class ContatoControl extends Controller
 
     public function update(ContatoRequest $request, $id)
     {
-        $dados = $request->all();
-        $contato= $this->contato->find($id);
-        $update=$contato->update($dados);
-        return redirect()->route('contato.index');
+        try 
+        {
+            $dados = $request->all();
+            $contato= $this->contato->find($id);
+            $update=$contato->update($dados);
+            flash('atualizado com sucesso!')->success();
+            return redirect()->route('contato.index');   
+            
+        } catch (\Exception $e) 
+        {
+            if(env('APP_DEBUG'))
+            {
+                flash($e->getMessage())->error();
+                return redirect()->back();
+            }
+            flash('erro ao atualizar, verifique os dados')->error();
+            return redirect()->back();
+        }
+        
     }
 
   
     public function destroy($id)
     {
-        $contato= $this->contato->find($id);
-        $delete=$contato->delete();
+        try {
+            $contato= $this->contato->find($id);
+            $delete=$contato->delete();
+            flash('excluido com sucesso!')->success();
+            return redirect()->route('contato.index');
 
-        return redirect()->route('contato.index');
+        } 
+        catch (\Exception $e) 
+        {
+            if(env('APP_DEBUG'))
+            {
+                flash($e->getMessage())->error();
+                return redirect()->back();
+            }
+            flash('erro ao excluir')->error();
+            return redirect()->back();
+        }
+       
     }
 }

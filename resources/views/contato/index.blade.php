@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container"><!--editar depois-->
+        {{--  Incluir as mensagens flash no corpo  --}}
+        @include('flash::message')
         <div class="card">
             <div class="card-header">
                 Gerenciador de Contatos

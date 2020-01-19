@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container"><!--editar depois-->
+    @include('flash::message')
 
     @if(isset($errors)&&count($errors)>0)
 			<div class='alert alert-danger'>
