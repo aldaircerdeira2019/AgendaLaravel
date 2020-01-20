@@ -57,17 +57,38 @@ class ContatoControl extends Controller
    
     public function show($id)
     {
-        $contato= $this->contato->find($id);
-        $title="Contato - {$contato->nome}";
-        return view('contato.show',compact('contato','title'));
+        try {
+            $contato= $this->contato->find($id);
+            $this->authorize('view',$contato);
+            $title="Contato - {$contato->nome}";
+            return view('contato.show',compact('contato','title'));
+        } catch (\Exception $e) {
+            if(env('APP_DEBUG')){
+                flash($e->getMessage())->error();
+                return redirect()->back();
+            }
+            flash('Não autorizado')->error();
+            return redirect()->back();
+        }
+       
     }
 
     
     public function edit($id)
     {
-        $contato= $this->contato->find($id);
-        $title="Contato - {$contato->nome}";
-        return view('contato.create-edit',compact('contato','title'));
+        try {
+            $contato= $this->contato->find($id);
+            $this->authorize('view',$contato);
+            $title="Contato - {$contato->nome}";
+            return view('contato.create-edit',compact('contato','title'));
+        } catch (\Exception $e) {
+            if(env('APP_DEBUG')){
+                flash($e->getMessage())->error();
+                return redirect()->back();
+            }
+            flash('Não autorizado')->error();
+            return redirect()->back();
+        }
     }
 
     public function update(ContatoRequest $request, $id)
@@ -76,6 +97,7 @@ class ContatoControl extends Controller
         {
             $dados = $request->all();
             $contato= $this->contato->find($id);
+            $this->authorize('update',$contato);
             $update=$contato->update($dados);
             flash('atualizado com sucesso!')->success();
             return redirect()->route('contato.index');   
@@ -98,6 +120,7 @@ class ContatoControl extends Controller
     {
         try {
             $contato= $this->contato->find($id);
+            $this->authorize('delete',$contato);
             $delete=$contato->delete();
             flash('excluido com sucesso!')->success();
             return redirect()->route('contato.index');

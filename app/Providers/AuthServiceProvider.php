@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Policies\ContatoPolicy;
+use App\Model\ContatoModel;
+use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        ContatoModel::Class => ContatoPolicy::Class,
     ];
 
     /**
@@ -25,6 +28,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        
     }
 }

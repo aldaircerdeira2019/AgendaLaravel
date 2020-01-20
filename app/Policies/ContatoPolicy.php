@@ -30,7 +30,7 @@ class ContatoPolicy
      */
     public function view(User $user, ContatoModel $contatoModel)
     {
-        //
+        return $user->id === $contatoModel->user_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class ContatoPolicy
      */
     public function update(User $user, ContatoModel $contatoModel)
     {
-        //
+        return $user->id === $contatoModel->user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class ContatoPolicy
      */
     public function delete(User $user, ContatoModel $contatoModel)
     {
-        //
+        return $user->id === $contatoModel->user_id;
     }
 
     /**
