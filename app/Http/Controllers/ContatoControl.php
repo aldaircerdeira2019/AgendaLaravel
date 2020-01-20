@@ -20,7 +20,7 @@ class ContatoControl extends Controller
     {   
         $title ='Lista de Contatos';
         $user_id = auth()->user()->id;
-        $contato = $this->contato->where('user_id',$user_id)->paginate($this->pagi);
+        $contato = $this->contato->where('user_id',$user_id)->orderBy('id','desc')->paginate($this->pagi);
         return view('contato.index',compact('contato','title'));
     }
 

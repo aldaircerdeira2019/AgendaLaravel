@@ -11,6 +11,6 @@ class ContatosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(ContatoModel::class,100)->create();
+        factory(ContatoModel::class,1000)->create();
     }
 }
