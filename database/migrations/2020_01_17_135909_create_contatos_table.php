@@ -15,6 +15,7 @@ class CreateContatosTable extends Migration
     {
         Schema::create('contatos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('nome',60);
             $table->char('telefone',15);
             $table->string('email',100)->nullable();
@@ -22,6 +23,8 @@ class CreateContatosTable extends Migration
             $table->text('descrição')->nullable();
             $table->string('avatar',160)->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
