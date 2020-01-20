@@ -19,7 +19,8 @@ class ContatoControl extends Controller
     public function index()
     {   
         $title ='Lista de Contatos';
-        $contato = $this->contato->paginate($this->pagi);
+        $user_id = auth()->user()->id;
+        $contato = $this->contato->where('user_id',$user_id)->paginate($this->pagi);
         return view('contato.index',compact('contato','title'));
     }
 
