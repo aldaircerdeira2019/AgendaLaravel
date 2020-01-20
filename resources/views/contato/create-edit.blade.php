@@ -24,6 +24,7 @@
             <form action="{{route('contato.store')}}" method="post" enctype="multipart/form-data">
         @endif
             @csrf
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
             <div class="card-body">
                 <div class="form-group">
                     <label for="nome">Nome completo</label>

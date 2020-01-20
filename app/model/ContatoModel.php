@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ContatoModel extends Model
 {
     protected $table    = 'contatos';
-    protected $fillable = ['nome','telefone','email', 'data_nas', 'descrição','avatar'];
+    protected $fillable = ['user_id','nome','telefone','email', 'data_nas', 'descrição','avatar'];
 
     public function getAvatarImageAttribute($value) {
         return $this->avatar == null ? asset('imagens/default.png') : asset($this->avatar);

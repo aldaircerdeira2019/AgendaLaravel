@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 $factory->define(ContatoModel::class, function (Faker $faker) {
     return [
         'nome'          =>   $faker->name,
+        'user_id'       =>    '1',
         'telefone'      =>   $faker->cellphoneNumber,
         'email'         =>   $faker->unique()->safeEmail,
         'data_nas'      =>   $faker->date('d-m-Y'),
